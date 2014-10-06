@@ -255,6 +255,7 @@ function ozh_ta_insert_tweets( $tweets ) {
         // Current tweet
 		$tid            = (string)$tweet->id_str;
 		$text           = ozh_ta_linkify_tweet( $tweet );
+		$title = ( strlen( $text ) > 50 ) ? substr( $text, 0, 50 ) . '...' : $text;
 		$date           = date( 'Y-m-d H:i:s', strtotime( $tweet->created_at ) + 3600 * get_option('gmt_offset') );
 		$source         = $tweet->source;
         $has_hashtags   = count( $tweet->entities->hashtags ) > 0;
@@ -282,7 +283,7 @@ function ozh_ta_insert_tweets( $tweets ) {
 
 			// Insert tweet as new post
 			$post = array(
-				'post_title'    => strip_tags( $text ),
+				'post_title'    => strip_tags( $title ),
 				'post_content'  => $text,
 				'post_date'     => $date,
 				'post_category' => array( $ozh_ta['post_category'] ),

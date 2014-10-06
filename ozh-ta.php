@@ -45,7 +45,7 @@ add_action( 'ozh_ta_cron_import', 'ozh_ta_cron_import' );
 add_action( 'init',        'ozh_ta_init' );
 add_action( 'admin_init',  'ozh_ta_load_admin' );
 add_action( 'admin_menu',  'ozh_ta_add_page');
-add_filter( 'the_content', 'ozh_ta_convert_old_posts' );
+// add_filter( 'the_content', 'ozh_ta_convert_old_posts' );
 
 // Import tweets from cron job
 function ozh_ta_cron_import() {
